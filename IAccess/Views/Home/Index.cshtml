@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    table {
+        width: 100%;
+        word-break: break-word;
+    }
+
+    tr {
+        border: #000 solid 1px;
+    }
+
+    th, td {
+        border-right: #000 solid 1px;
+    }
+
+    .container {
+        max-width: 100%
+    }
+</style>
+
+<div id="main-component">
+    <div v-if="isLoading">Loading....</div>
+
+    <button v-on:click="insert" class="mb-2" :disabled="isLoading">Insert</button>
+
+    <br/>
+    <input v-model="keyword"/>
+    <button v-on:click="search" :disabled="isLoading">Search</button>
+
+
+    <table class="mt-2">
+        <tr style="">
+            <th>String ID</th>
+            <th>String Content</th>
+            <th>Match times</th>
+        </tr>
+
+        <tr v-for="(item, index) in result" :key="index">
+            <td>{{ item.id }}</td>
+            <td>{{ item.stringContent }}</td>
+            <td>{{ item.matchTimes }}</td>
+        </tr>
+
+
+    </table>
+</div>
